@@ -1,0 +1,23 @@
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 660px;
+  height: 660px;
+  background-color: green;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border: solid 1px black;
+}
+
+.stone {
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  border-radius: 50%;
+}

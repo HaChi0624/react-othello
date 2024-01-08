@@ -1,0 +1,1 @@
+export type stone = null | "x" | "o"
