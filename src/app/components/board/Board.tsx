@@ -1,29 +1,35 @@
 "use client";
 import React, { useState } from "react";
 import styles from "@/app/styles/index.module.css";
+import { Direction, TurnColor, stone } from "@/app/types/stone";
 
 const Board = () => {
-  // 盤面 0無 1白 2黒
-  const init = [...Array(8)].map(() => [...Array(8)].map(() => 0));
+  // 盤面
+  const init: stone[][] = [...Array(8)].map(() => [...Array(8)].map(() => 0));
   init[3][3] = 1;
   init[3][4] = 2;
   init[4][3] = 2;
   init[4][4] = 1;
-  const directions = [
+  const [board, setBoard] = useState<stone[][]>(init);
+
+  // 白⇔黒　先手は黒
+  const [turnColor, setTurnColor] = useState<TurnColor | number>(1);
+
+  // 方向
+  const directions: Direction[][] = [
     [-1, 1],
     [0, 1],
     [1, 1],
     [1, 0],
-    [1, -1], //左下
+    [1, -1],
     [0, -1],
     [-1, -1],
     [-1, 0],
   ];
-  const [board, setBoard] = useState(init);
-  const [turnColor, setTurnColor] = useState(1); //先手黒
 
+  // オセロの動作
   const clickCell = (x: number, y: number) => {
-    const newBoard = board.map((row) => [...row]);
+    const newBoard: stone[][] = board.map((row) => [...row]);
     if (newBoard[y][x] === 0) {
       for (const direction of directions) {
         for (let distance = 1; distance < 8; distance++) {
@@ -37,6 +43,7 @@ const Board = () => {
 
           if (newBoard[nextY][nextX] === 0) break;
 
+          // 同じ色が合ったら実行
           if (newBoard[nextY][nextX] === turnColor) {
             if (distance > 1) {
               for (let back = distance; back >= 0; back--) {
@@ -48,7 +55,7 @@ const Board = () => {
             }
             break;
           }
-
+          // 返せる可能性があるなら続行
           if (newBoard[nextY][nextX] === 3 - turnColor) continue;
         }
       }
