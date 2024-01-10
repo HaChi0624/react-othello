@@ -62,8 +62,15 @@ const Board = () => {
     }
   };
 
+  // それぞれの個数
+  const numberOfB: number = board.flat().filter((value) => value === 1).length;
+  const numberOfW: number = board.flat().filter((value) => value === 2).length;
+
   return (
     <div className={styles.container}>
+      <div>{turnColor === 1 ? "黒" : "白"}の手番です</div>
+      <div>黒{numberOfB}個</div>
+      <div>白{numberOfW}個</div>
       <div className={styles.board}>
         {board.map((row, y) =>
           row.map((color, x) => (
