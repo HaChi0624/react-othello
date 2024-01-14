@@ -1,6 +1,7 @@
 # オセロ
 # 参考ページ
 https://zenn.dev/yossuli/articles/e61a4571fbd2a8
+https://www.youtube.com/watch?v=c25Ir8-NsvY
 
 # 今後の方針
 ## ログイン機能
