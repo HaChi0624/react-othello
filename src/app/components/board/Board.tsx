@@ -68,26 +68,59 @@ const Board = () => {
 
   return (
     <div className={styles.container}>
-      <div>{turnColor === 1 ? "黒" : "白"}の手番です</div>
-      <div>黒{numberOfB}個</div>
-      <div>白{numberOfW}個</div>
-      <div className={styles.board}>
-        {board.map((row, y) =>
-          row.map((color, x) => (
-            <div
-              className={styles.cell}
-              key={`${x}-${y}`}
-              onClick={() => clickCell(x, y)}
-            >
-              {color !== 0 && (
-                <div
-                  className={styles.stone}
-                  style={{ backgroundColor: color === 1 ? "#000" : "#fff" }}
-                />
-              )}
-            </div>
-          ))
-        )}
+      <div style={{ display: "flex" }}>
+        <div
+          className={styles.player}
+          style={{
+            background: turnColor === 1 ? "black" : "white",
+            color: turnColor === 1 ? "white" : "black",
+          }}
+        >
+          {turnColor === 1 ? "黒" : "白"}
+        </div>
+        <div>の手番です</div>
+      </div>
+
+      <div style={{ fontSize: "24px", display: "flex", gap: "24px" }}>
+        <div
+          className={styles.player}
+          style={{
+            background: "black",
+            borderColor: "black",
+            color: "white",
+          }}
+        >
+          {numberOfB}
+        </div>
+
+        <div className={styles.board}>
+          {board.map((row, y) =>
+            row.map((color, x) => (
+              <div
+                className={styles.cell}
+                key={`${x}-${y}`}
+                onClick={() => clickCell(x, y)}
+              >
+                {color !== 0 && (
+                  <div
+                    className={styles.stone}
+                    style={{ backgroundColor: color === 1 ? "#000" : "#fff" }}
+                  />
+                )}
+              </div>
+            ))
+          )}
+        </div>
+
+        <div
+          className={styles.player}
+          style={{
+            background: "white",
+            borderColor: "black",
+          }}
+        >
+          {numberOfW}
+        </div>
       </div>
     </div>
   );
