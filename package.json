@@ -34,6 +34,8 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
     "prisma": "^5.8.0",
